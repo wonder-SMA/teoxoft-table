@@ -64,6 +64,7 @@ const onKeyDown = (event, id) => {
 	height: 100%;
 	margin: 0 auto;
 	border-collapse: collapse;
+	overflow: auto;
 
 	thead {
 		position: sticky;
