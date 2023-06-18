@@ -63,24 +63,25 @@ const onKeyDown = (event, id) => {
 	position: relative;
 	height: 100%;
 	margin: 0 auto;
-	border-collapse: collapse;
-	overflow: auto;
+	border-right: 1px solid #d1d5db;
+	border-bottom: 1px solid #d1d5db;
+	border-left: 1px solid #d1d5db;
+	border-collapse: separate;
+	border-spacing: 0;
 
 	thead {
 		position: sticky;
 		top: 0;
-		border: 1px solid #d1d5db;
 		background-color: #f3f4f6;
 	}
 
 	tbody {
 		tr {
-			border: 1px solid #d1d5db;
 			cursor: pointer;
 			transition: all 0.05s;
 
 			&:focus-visible, &:active {
-				outline: 2px solid #2563eb;;
+				outline: 2px solid #2563eb;
 				outline-offset: -2px;
 			}
 		}
@@ -96,6 +97,8 @@ const onKeyDown = (event, id) => {
 		}
 
 		th {
+			border-top: 1px solid #d1d5db;
+			border-bottom: 1px solid #d1d5db;
 			color: #374151;
 			font-weight: 500;
 		}

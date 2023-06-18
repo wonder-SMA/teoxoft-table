@@ -33,6 +33,7 @@ const props = defineProps({
 	font-size: inherit;
 	color: white;
 	background-color: #2563eb;
+	outline-offset: 4px;
 	user-select: none;
 	touch-action: manipulation;
 	cursor: pointer;
