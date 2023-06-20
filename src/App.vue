@@ -19,8 +19,7 @@ const { countOpenModals } = storeToRefs(modalStore);
 #app {
 	width: 100%;
 	max-width: 1280px;
-	margin: 0 auto;
+	height: 100%;
 	display: flex;
-	overflow: auto;
 }
 </style>

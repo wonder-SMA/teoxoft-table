@@ -17,32 +17,32 @@ const onKeyDown = (event, id) => {
 </script>
 
 <template>
-	<table class="table">
-		<thead>
-		<tr>
-			<th>
-				Имя
-			</th>
-			<th>
-				Фамилия
-			</th>
-			<th>
-				Стаж
-			</th>
-			<th>
-				Возраст
-			</th>
-			<th>
-				Адрес
-			</th>
-		</tr>
-		</thead>
-		<tbody>
-		<template v-for="item in data">
+	<div class="table-container">
+		<table class="table">
+			<thead>
+			<tr>
+				<th>
+					Имя
+				</th>
+				<th>
+					Фамилия
+				</th>
+				<th>
+					Стаж
+				</th>
+				<th>
+					Возраст
+				</th>
+				<th>
+					Адрес
+				</th>
+			</tr>
+			</thead>
+			<tbody>
 			<tr
-				v-if="Object.values(item).join('').length > 1"
 				tabindex="0"
 				title="Редактировать"
+				v-for="item in data"
 				:key="item.id"
 				@click="emit('edit', item.id)"
 				@keydown="onKeyDown($event, item.id)"
@@ -53,21 +53,25 @@ const onKeyDown = (event, id) => {
 				<td>{{ item.age }}</td>
 				<td>{{ item.address }}</td>
 			</tr>
-		</template>
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	</div>
 </template>
 
 <style lang="scss" scoped>
+.table-container {
+	margin: 0 auto;
+	overflow: auto;
+}
+
 .table {
 	position: relative;
-	height: 100%;
-	margin: 0 auto;
 	border-right: 1px solid #d1d5db;
 	border-bottom: 1px solid #d1d5db;
 	border-left: 1px solid #d1d5db;
 	border-collapse: separate;
 	border-spacing: 0;
+	margin: 8px;
 
 	thead {
 		position: sticky;
@@ -80,9 +84,20 @@ const onKeyDown = (event, id) => {
 			cursor: pointer;
 			transition: all 0.05s;
 
-			&:focus-visible, &:active {
-				outline: 2px solid #2563eb;
+			&:hover, &:active, &:focus-visible {
 				outline-offset: -2px;
+			}
+
+			&:hover {
+				outline: 2px solid #3b82f6;
+			}
+
+			&:active {
+				outline: 2px solid #1d4ed8;
+			}
+
+			&:focus-visible {
+				outline: 2px solid #2563eb;
 			}
 		}
 	}

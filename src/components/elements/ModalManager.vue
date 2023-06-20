@@ -9,7 +9,7 @@ const onClose = (name, data = {}) => {
   modalStore.setModalState({ name, isOpen: false, data });
 
   // Возвращаем скролл основного окна
-  document.body.style.overflow = "auto";
+  document.body.style.overflow = 'auto';
 };
 
 </script>
@@ -17,7 +17,7 @@ const onClose = (name, data = {}) => {
 <template>
 	<component
 		v-for="(modal, index) in modalState"
-		key="key"
+		:key="modal.name"
 		:is="modals[modal.name]"
 		:index="index"
 		:name="modal.name"

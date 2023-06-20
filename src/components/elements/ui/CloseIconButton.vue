@@ -22,10 +22,10 @@ const props = defineProps({
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
+			viewBox="0 0 26 26"
 			:style="`width: ${width}px; height: ${height}px`"
-			viewBox="0 0 24 24"
 			stroke-width="2"
+			fill="none"
 			stroke="#374151"
 			class="icon"
 		>

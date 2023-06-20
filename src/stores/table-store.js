@@ -167,12 +167,21 @@ export const useTableStore = defineStore('tableStore', () => {
     ]);
 
     const setTableData = data => {
-      tableData.value = tableData.value.map(item => {
-        if (item.id === data.value.id) {
-          return data.value;
-        }
-        return item;
-      });
+
+      // Копируем данные для редактирования записи без id
+      const dataEntry = Object.entries(data.value).filter(entry => entry[0] !== 'id' && entry[1] && entry);
+
+
+      if (dataEntry.length) {
+        tableData.value = tableData.value.map(item => {
+          if (item.id === data.value.id) {
+            return data.value;
+          }
+          return item;
+        });
+      } else {
+        tableData.value = tableData.value.filter(item => item.id !== data.value.id);
+      }
     };
 
     return {

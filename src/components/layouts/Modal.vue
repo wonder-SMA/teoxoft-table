@@ -31,10 +31,17 @@ const onClick = event => {
     emit('close');
   }
 };
+
+// Если нажатие клавиши Escape, то закрываем модалку
+const onKeyDown = (event) => {
+  if (event.key === 'Escape') {
+    emit('close');
+  }
+};
 </script>
 
 <template>
-	<div ref="modalRef" tabindex="-1" class="modal" @click="onClick">
+	<div ref="modalRef" tabindex="-1" class="modal" @click="onClick" @keydown="onKeyDown">
 		<div class="modal__container" :class="`modal__container-${name}`">
 			<header class="modal__header">
 				<h3 class="modal__heading">{{ heading }}</h3>
@@ -58,17 +65,14 @@ const onClick = event => {
 	bottom: 0;
 	left: 0;
 	z-index: 200;
-	padding: 12px;
 	display: flex;
 	background: rgba(0, 0, 0, .8);
 
 	.modal__container {
 		position: relative;
-		min-height: 300px;
-		height: 80%;
+		height: 100%;
 		max-height: 800px;
-		min-width: 300px;
-		width: 95%;
+		width: 100%;
 		max-width: 800px;
 		margin: auto;
 		display: flex;
@@ -76,9 +80,27 @@ const onClick = event => {
 		border-radius: 8px;
 		background: white;
 
+		@media (min-width: 375px) {
+			& {
+				width: 95%;
+			}
+		}
+
+		@media (min-height: 375px) {
+			& {
+				height: 95%;
+			}
+		}
+
 		@media (min-width: 768px) {
 			& {
 				width: 80%;
+			}
+		}
+
+		@media (min-height: 768px) {
+			& {
+				height: 80%;
 			}
 		}
 
